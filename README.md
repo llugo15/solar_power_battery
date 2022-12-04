@@ -1,2 +1,2 @@
 # solar_power_battery
-Microcontroller development
+Senior Design Project: Microcontroller and Applicaiton Code
