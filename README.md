@@ -1,4 +1,4 @@
-# solar_power_battery
+# Team 16: solar_power_battery
 Microcontroller development
 
 
