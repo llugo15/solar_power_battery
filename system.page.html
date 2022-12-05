@@ -1,0 +1,239 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-grid class="d-sm">
+      <ion-row>
+        <ion-col>
+          <ion-title size="small" style="text-align:center;">MySolarCharge</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="d-md">
+      <ion-row>
+        <ion-col>
+          <ion-title style="margin-top: 10px; text-align: center;">MySolarChargeApp</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Footer -->
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button color="light" expand="full" [routerLink]="'/overview'">
+            <ion-icon name="planet-outline"></ion-icon>Overview
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button color="light" expand="full" [routerLink]="'/system'">
+            <ion-icon name="grid-outline"></ion-icon>System
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+<!-- Day Graph and its Data contents -->
+<ion-content>
+  <ion-grid>
+    <!-- <ion-row>
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> Day: 10/13/2022 </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="graph">
+              <p>Data will be displayed here.</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> Max Power Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Data to be displayed</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> Current Power Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Data to be displayed</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> Voltage </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Data to be displayed</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> Current </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Data to be displayed</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row> 
+   <div style="border-bottom: 1px solid black;"></div> -->
+<!-- Week Graph and its Data contents -->
+    <ion-row>
+      <!-- Displays the Current WeekDay -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> {{ 'WeekDay: ' + weekDate }} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="graph">
+              <!-- This is where the graph lives -->
+              <div style="width:100%;">
+                <canvas width="350" height="300" #weekGraph></canvas>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- Used for Max Power of Week -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Power Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ maxPowerData + ' W' }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Max Voltage for Week -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Voltage Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ maxVoltageData + ' V' }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- Max Current Output for Week -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Current Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ maxCurrentData + ' A' }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Current </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ weekCurrent}}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col> -->
+    </ion-row>  
+    <div style="border-bottom: 1px solid black;"></div>
+
+
+<!-- Month Graph and its Data contents -->
+    <ion-row>
+      <!-- getting the current month -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title> {{ 'Month: ' + monthDate }} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="graph">
+              <!-- This is where the graph lives -->
+              <div style="width:100%;">
+                <canvas width="350" height="300" #monthGraph></canvas>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- Max Power Output for Month -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Power Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ maxPowerData + ' W' }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Max Voltage Outpt for Month -->
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Voltage Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ maxVoltageData + ' V' }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <!-- Max Current Output for Month -->
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Current Output </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ maxCurrentData + ' A' }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- <ion-col>
+        <ion-card color="light">
+          <ion-card-header style="text-align: center;">
+            <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Current </ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <p style="font-size: large;"><strong>{{ monthCurrent }}</strong></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col> -->
+    </ion-row>  
+  </ion-grid>
+</ion-content>

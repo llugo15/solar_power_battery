@@ -1,0 +1,102 @@
+<ion-content  color="primary">
+  <!-- form used to get the email and password -->
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <ion-grid>
+      <!-- Header for the from -->
+      <ion-row color="primary" style="margin-top: 200px; text-align: center;">
+        <ion-col style="text-align:center;">
+          <div text-center>
+            <h3>MySolarCharge</h3>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- Login for Larger Screens -->
+      <ion-row class="d-sm">
+          <ion-col></ion-col>
+          <ion-col>
+          <div>
+            <!-- getting the email -->
+            <ion-item>
+              <ion-input 
+                name="email" 
+                type="email" 
+                placeholder="your@email.com" 
+                ngModel 
+                required
+                email></ion-input>
+            </ion-item>
+            <ion-item>
+              <!-- getting the password -->
+              <ion-input 
+                name="password" 
+                type="password" 
+                placeholder="Password" 
+                ngModel 
+                required
+                minlength="6"></ion-input>
+            </ion-item>
+          </div>
+          <hr>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <!-- Login for Smaller Screens -->
+      <ion-row class="d-md">
+        <ion-col style="margin-right: 40px; margin-left: 40px;">
+        <div>
+          <ion-item>
+            <!-- getting the email -->
+            <ion-input 
+              name="email" 
+              type="email" 
+              placeholder="your@email.com" 
+              ngModel 
+              required
+              email></ion-input>
+          </ion-item>
+          <!-- getting the password -->
+          <ion-item>
+            <ion-input 
+              name="password" 
+              type="password" 
+              placeholder="Password" 
+              ngModel 
+              required
+              minlength="6"></ion-input>
+          </ion-item>
+        </div>
+        <hr>
+      </ion-col>
+    </ion-row>
+    <!-- If there is an error message -->
+    <ion-row *ngIf="errorMessage" style="justify-content: center;">
+      <div class="d-sm alert" style="width: 400px; text-align: center;">
+        <p> {{ errorMessage }} </p>
+      </div>
+      <div class="d-md alert" style="text-align: center;">
+        <p> {{ errorMessage }} </p>
+      </div>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <!-- Used to login or singup -->
+      <div>
+        <div style="display:inline-block;">
+          <ion-button 
+            size="small"
+            type="submit" 
+            [disabled]="!authForm.valid"
+            (click)="showLoading()">{{ isLoginMode ? 'Login' : 'Sign Up'}}</ion-button>
+        </div> |
+        <!-- used to switch from login to signup -->
+        <div style="display:inline-block;">
+          <ion-button 
+            size="small"
+            type="button" 
+            (click)="onSwitchMode()"
+            >Switch to {{ isLoginMode ? 'Sign Up' : 'Login'  }}</ion-button>
+        </div>
+      </div>
+    </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
