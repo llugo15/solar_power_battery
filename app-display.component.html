@@ -1,0 +1,113 @@
+<!-- This is for the charging mode, graph, and the data from the graph to be displayed for the user -->
+  <ion-row>
+    <!-- used to display if battery is charging or discharging -->
+    <ion-col style="text-align: center;">
+      <div>
+        <div style="display: block;">
+          <ion-label position="stacked">Mode</ion-label>
+        </div>
+        <div style="display: block;">
+          <ion-badge *ngIf="!charging" color="success" size="large">{{ 'Charging' }}</ion-badge>
+          <ion-badge *ngIf="charging" color="danger" size="large">{{ 'Discharging' }}</ion-badge>
+        </div>
+      </div>
+    </ion-col>
+    <!-- Used to display the battery level -->
+    <ion-col style="text-align: center;">
+      <ion-label position="stacked">Battery Level: {{ progressDisplay + '%'}}</ion-label>
+      <ion-progress-bar style="height:20px;" [buffer]="buffer" [value]="progress" color="warning" size="large"></ion-progress-bar>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <!-- Displaying the AC output -->
+    <ion-col style="text-align: center;">
+      <div>
+        <div style="display: block;">
+          <ion-label position="stacked">AC Output</ion-label>
+        </div>
+        <div style="display: block;">
+          <ion-icon *ngIf="AC === 1" size="large" style="color: green;" name="battery-charging-outline"></ion-icon>
+          <ion-icon *ngIf="AC === 0" size="large" style="color: red;" name="close-circle-outline"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+    <!-- Displaying the DC output -->
+    <ion-col style="text-align: center;">
+      <div>
+        <div style="display: block;">
+          <ion-label position="stacked">DC Output</ion-label>
+        </div>
+        <div style="display: block;">
+          <ion-icon *ngIf="DC === 1" size="large" style="color: green;" name="battery-charging-outline"></ion-icon>
+          <ion-icon *ngIf="DC === 0" size="large" style="color: red;" name="close-circle-outline"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <!-- getting the day data -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-title> {{"Day: " + date }} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="graph">
+            <!-- This is where the graph lives -->
+            <div style="width:100%;">
+              <canvas width="350" height="300" #powerGraph></canvas>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <!-- Max Power Output for the Day -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header style="text-align: center;">
+          <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Max Power Output </ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: center;">
+          <p style="font-size: large;"><strong>{{ maxPowerData + ' W' }}</strong></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <!-- Current Power Output for the Day  -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header style="text-align: center;">
+          <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Current Power Output </ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: center;">
+          <p style="font-size: large;"><strong>{{ currentPowerData + ' W' }}</strong></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <!-- Voltage Data for Day -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header style="text-align: center;">
+          <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Voltage </ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: center;">
+          <p style="font-size: large;"><strong>{{ voltageData + ' V'}}</strong></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <!-- Current Current Data for day -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header style="text-align: center;">
+          <ion-card-title style="padding-bottom: 4px; border-bottom: 1px solid black;"> Current </ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: center;">
+          <p style="font-size: large;"><strong>{{ currentData + ' A'}}</strong></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+

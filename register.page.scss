@@ -1,0 +1,81 @@
+// max is that number or less
+// min is that number or more 
+// Styling 
+@media screen and (min-width: 0px ) and (max-width: 500px) {
+
+    .d-sm {
+        display: none;
+    }
+    
+    }
+    
+    @media screen and (min-width: 501px) {
+    
+    .d-md {
+            display: none;
+    }
+        
+        }
+    
+
+ion-item{
+    --background: #3880ff;
+    --color: #fff;
+}
+
+ion-button{
+    --background: #062f77;
+}
+
+// alert stlying
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  
+  .alert h4 {
+    margin-top: 0;
+    color: inherit;
+  }
+  
+  .alert .alert-link {
+    font-weight: bold;
+  }
+  
+  .alert > p,
+  .alert > ul {
+    margin-bottom: 0;
+  }
+  
+  .alert > p + p {
+    margin-top: 5px;
+  }
+  
+  .alert-dismissable,
+  .alert-dismissible {
+    padding-right: 35px;
+  }
+  
+  .alert-dismissable.close,
+  .alert-dismissible.close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+  }
+
+  .alert {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+  }
+  
+  .alert hr {
+    border-top-color: #e4b9c0;
+  }
+  
+  .alert.alert-link {
+    color: #843534;
+  }

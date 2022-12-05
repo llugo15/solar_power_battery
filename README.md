@@ -1,2 +1,6 @@
 # solar_power_battery
-Senior Design Project: Microcontroller and Applicaiton Code
+Microcontroller development
+
+
+
+The SAMPLE FOLDER in this dipository should be ignored. 
