@@ -1,5 +1,5 @@
 # solar_power_battery
-Microcontroller development
+Android Application and Website Applicaiton
 
 
 
